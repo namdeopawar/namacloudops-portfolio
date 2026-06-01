@@ -3,727 +3,639 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Namdeo Pawar — Senior DevOps Engineer Resume. AWS, Kubernetes, Terraform, Zero Trust, GitOps." />
+  <meta name="description" content="Namdeo Pawar — Senior DevOps & Kubernetes Engineer. AWS EKS, On-Prem K8s, Terraform, GitOps, Zero Trust." />
   <title>Namdeo Pawar — Resume</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    /* ===== VARIABLES ===== */
     :root {
-      --bg:       #0d1117;
-      --bg-card:  #161b22;
-      --bg-alt:   #1c2230;
-      --border:   #21262d;
-      --green:    #00ff88;
-      --cyan:     #00d4ff;
-      --purple:   #a371f7;
-      --orange:   #f78166;
-      --yellow:   #e3b341;
-      --text:     #e6edf3;
-      --muted:    #8b949e;
-      --dim:      #484f58;
-      --mono:     'JetBrains Mono', monospace;
-      --sans:     'Inter', system-ui, sans-serif;
+      --bg:      #0d1117;
+      --bg-card: #161b22;
+      --bg-alt:  #1c2230;
+      --border:  #21262d;
+      --green:   #00ff88;
+      --cyan:    #00d4ff;
+      --purple:  #a371f7;
+      --orange:  #f78166;
+      --yellow:  #e3b341;
+      --text:    #e6edf3;
+      --muted:   #8b949e;
+      --dim:     #484f58;
+      --mono:    'JetBrains Mono', monospace;
+      --sans:    'Inter', system-ui, sans-serif;
     }
 
-    /* ===== RESET ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 15px; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--sans);
-      line-height: 1.6;
-      min-height: 100vh;
-    }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; }
     a { color: var(--cyan); text-decoration: none; }
     a:hover { color: var(--green); }
 
-    /* ===== PRINT BUTTON ===== */
-    .print-bar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      background: rgba(13,17,23,0.92);
-      backdrop-filter: blur(10px);
+    /* ===== TOP BAR ===== */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,17,23,0.94);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between;
       padding: 10px 32px;
     }
-    .print-bar-left {
-      font-family: var(--mono);
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-    .print-bar-left span { color: var(--green); }
-    .print-bar-actions { display: flex; gap: 10px; }
-    .btn-print {
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      padding: 6px 16px;
-      border-radius: 6px;
-      border: 1px solid var(--green);
-      color: var(--green);
-      background: transparent;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-    }
-    .btn-print:hover { background: var(--green); color: var(--bg); }
-    .btn-back {
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      padding: 6px 16px;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      background: transparent;
-      cursor: pointer;
-      transition: border-color 0.2s, color 0.2s;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .btn-back:hover { border-color: var(--cyan); color: var(--cyan); }
+    .topbar-brand { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); }
+    .topbar-brand .g { color: var(--green); }
+    .topbar-brand .c { color: var(--cyan); }
+    .topbar-actions { display: flex; gap: 10px; }
+    .btn { font-family: var(--mono); font-size: 0.75rem; padding: 6px 16px; border-radius: 6px; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+    .btn-outline { border: 1px solid var(--border); color: var(--muted); background: transparent; text-decoration: none; }
+    .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); }
+    .btn-primary { border: 1px solid var(--green); color: var(--green); background: transparent; }
+    .btn-primary:hover { background: var(--green); color: var(--bg); }
 
-    /* ===== LAYOUT ===== */
-    .page {
-      max-width: 900px;
-      margin: 72px auto 60px;
-      padding: 0 24px;
-    }
+    /* ===== PAGE ===== */
+    .page { max-width: 920px; margin: 68px auto 64px; padding: 0 24px; }
 
     /* ===== HEADER ===== */
     .cv-header {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 32px;
-      align-items: start;
-      padding: 40px;
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 14px;
-      margin-bottom: 24px;
+      border-radius: 16px;
+      padding: 36px 40px;
+      margin-bottom: 16px;
       position: relative;
       overflow: hidden;
     }
     .cv-header::before {
       content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--green), var(--cyan), var(--purple));
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--green) 0%, var(--cyan) 50%, var(--purple) 100%);
     }
+    .cv-header::after {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle at top right, rgba(0,255,136,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .header-inner { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: start; }
     .cv-name {
       font-family: var(--mono);
-      font-size: 2.2rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, var(--text), var(--cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 6px;
+      font-size: 2.4rem; font-weight: 700;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #e6edf3 30%, var(--cyan));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 4px;
     }
     .cv-role {
-      font-family: var(--mono);
-      font-size: 1rem;
-      color: var(--green);
-      margin-bottom: 12px;
-      letter-spacing: 0.04em;
+      font-family: var(--mono); font-size: 0.95rem;
+      color: var(--green); letter-spacing: 0.05em; margin-bottom: 8px;
     }
+    .cv-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+    .cv-tag {
+      font-family: var(--mono); font-size: 0.68rem;
+      padding: 3px 10px; border-radius: 20px;
+      background: rgba(0,212,255,0.07);
+      border: 1px solid rgba(0,212,255,0.2);
+      color: var(--cyan);
+    }
+    .cv-tag.g { background: rgba(0,255,136,0.07); border-color: rgba(0,255,136,0.2); color: var(--green); }
     .cv-summary {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.75;
-      max-width: 580px;
+      font-size: 0.88rem; color: var(--muted); line-height: 1.8; max-width: 580px;
     }
-    .cv-summary strong { color: var(--text); }
-    .cv-contact {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      align-items: flex-end;
+    .cv-summary strong { color: var(--text); font-weight: 600; }
+    .cv-summary .hi { color: var(--green); font-weight: 600; }
+
+    /* Contact */
+    .cv-contact { display: flex; flex-direction: column; gap: 7px; align-items: flex-end; }
+    .ci {
+      font-family: var(--mono); font-size: 0.72rem; color: var(--muted);
+      display: flex; align-items: center; gap: 7px;
     }
-    .cv-contact-item {
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .cv-contact-item svg { width: 13px; height: 13px; color: var(--green); flex-shrink: 0; }
-    .cv-contact-item a { color: var(--muted); }
-    .cv-contact-item a:hover { color: var(--cyan); }
-    .cv-location {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--dim);
-      margin-top: 4px;
-      text-align: right;
-    }
+    .ci svg { width: 12px; height: 12px; color: var(--green); flex-shrink: 0; }
+    .ci a { color: var(--muted); }
+    .ci a:hover { color: var(--cyan); }
+    .cv-loc { font-family: var(--mono); font-size: 0.68rem; color: var(--dim); margin-top: 6px; text-align: right; }
 
     /* ===== SECTION ===== */
-    .cv-section {
+    .sec {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 28px 32px;
-      margin-bottom: 16px;
+      padding: 26px 32px;
+      margin-bottom: 14px;
     }
-    .cv-section-title {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--green);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 20px;
-      padding-bottom: 10px;
+    .sec-title {
+      font-family: var(--mono); font-size: 0.68rem;
+      color: var(--green); text-transform: uppercase; letter-spacing: 0.14em;
+      margin-bottom: 20px; padding-bottom: 10px;
       border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      display: flex; align-items: center; gap: 8px;
     }
-    .cv-section-title::before {
-      content: '▸';
-      color: var(--green);
-    }
+    .sec-title::before { content: '▸'; }
 
     /* ===== SKILLS ===== */
-    .skills-rows { display: flex; flex-direction: column; gap: 10px; }
-    .skill-row { display: flex; gap: 12px; align-items: flex-start; }
-    .skill-label {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--dim);
-      min-width: 130px;
-      padding-top: 4px;
-      flex-shrink: 0;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+    .skill-rows { display: flex; flex-direction: column; gap: 9px; }
+    .sr { display: flex; gap: 12px; align-items: flex-start; }
+    .sl {
+      font-family: var(--mono); font-size: 0.68rem; color: var(--dim);
+      min-width: 140px; padding-top: 4px; flex-shrink: 0;
+      text-transform: uppercase; letter-spacing: 0.04em;
     }
-    .skill-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 5px; }
     .chip {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      padding: 3px 9px;
-      border-radius: 4px;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      background: var(--bg-alt);
+      font-family: var(--mono); font-size: 0.68rem;
+      padding: 3px 9px; border-radius: 4px;
+      border: 1px solid var(--border); color: var(--muted); background: var(--bg-alt);
     }
-    .chip.g { border-color: rgba(0,255,136,0.3); color: var(--green); background: rgba(0,255,136,0.05); }
-    .chip.c { border-color: rgba(0,212,255,0.3); color: var(--cyan); background: rgba(0,212,255,0.05); }
-    .chip.p { border-color: rgba(163,113,247,0.3); color: var(--purple); background: rgba(163,113,247,0.05); }
-    .chip.o { border-color: rgba(247,129,102,0.3); color: var(--orange); background: rgba(247,129,102,0.05); }
-    .chip.y { border-color: rgba(227,179,65,0.3); color: var(--yellow); background: rgba(227,179,65,0.05); }
+    .chip.g  { border-color: rgba(0,255,136,0.3); color: var(--green);  background: rgba(0,255,136,0.05); }
+    .chip.c  { border-color: rgba(0,212,255,0.3); color: var(--cyan);   background: rgba(0,212,255,0.05); }
+    .chip.p  { border-color: rgba(163,113,247,0.3); color: var(--purple); background: rgba(163,113,247,0.05); }
+    .chip.o  { border-color: rgba(247,129,102,0.3); color: var(--orange); background: rgba(247,129,102,0.05); }
+    .chip.y  { border-color: rgba(227,179,65,0.3);  color: var(--yellow); background: rgba(227,179,65,0.05); }
+    .chip.hi { border-color: rgba(0,255,136,0.5); color: var(--green); background: rgba(0,255,136,0.1); font-weight: 700; }
 
     /* ===== EXPERIENCE ===== */
-    .exp-item { margin-bottom: 28px; }
-    .exp-item:last-child { margin-bottom: 0; }
-    .exp-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 4px;
-      gap: 16px;
-      flex-wrap: wrap;
+    .exp { margin-bottom: 26px; }
+    .exp:last-child { margin-bottom: 0; }
+    .exp-top {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; gap: 16px; flex-wrap: wrap; margin-bottom: 2px;
     }
-    .exp-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text);
+    .exp-title { font-size: 0.95rem; font-weight: 600; color: var(--text); }
+    .badge {
+      display: inline-block; font-family: var(--mono); font-size: 0.6rem;
+      padding: 2px 7px; border-radius: 3px; margin-left: 6px; vertical-align: middle;
+      background: rgba(0,255,136,0.1); border: 1px solid rgba(0,255,136,0.25); color: var(--green);
     }
-    .exp-company {
-      font-family: var(--mono);
-      font-size: 0.82rem;
-      color: var(--cyan);
-      margin-bottom: 10px;
+    .exp-co { font-family: var(--mono); font-size: 0.8rem; color: var(--cyan); margin-bottom: 10px; }
+    .exp-right { text-align: right; }
+    .exp-date { font-family: var(--mono); font-size: 0.7rem; color: var(--muted); }
+    .exp-loc  { font-size: 0.7rem; color: var(--dim); }
+    .pts { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+    .pts li {
+      font-size: 0.85rem; color: var(--muted); line-height: 1.65;
+      padding-left: 16px; position: relative;
     }
-    .exp-date {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--muted);
-      white-space: nowrap;
-      text-align: right;
+    .pts li::before { content: '›'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+    .pts li strong { color: var(--text); }
+    .pts li .m { color: var(--green); font-weight: 600; }
+    .pts li .k { color: var(--cyan); font-weight: 500; }
+    .techs { display: flex; flex-wrap: wrap; gap: 5px; }
+    .techs span {
+      font-family: var(--mono); font-size: 0.63rem;
+      padding: 2px 7px; border-radius: 3px;
+      background: var(--bg-alt); border: 1px solid var(--border); color: var(--dim);
     }
-    .exp-location {
-      font-size: 0.72rem;
-      color: var(--dim);
-      text-align: right;
-    }
-    .exp-badge {
-      display: inline-block;
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      padding: 2px 7px;
-      border-radius: 3px;
-      background: rgba(0,255,136,0.1);
-      border: 1px solid rgba(0,255,136,0.25);
-      color: var(--green);
-      margin-left: 6px;
-      vertical-align: middle;
-    }
-    .exp-points {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-bottom: 12px;
-    }
-    .exp-points li {
-      font-size: 0.86rem;
-      color: var(--muted);
-      line-height: 1.6;
-      padding-left: 16px;
-      position: relative;
-    }
-    .exp-points li::before {
-      content: '›';
-      position: absolute;
-      left: 0;
-      color: var(--green);
-      font-weight: 700;
-    }
-    .exp-points li strong { color: var(--text); }
-    .exp-points li .metric { color: var(--green); font-weight: 600; }
-    .exp-tech { display: flex; flex-wrap: wrap; gap: 5px; }
-    .exp-tech span {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      padding: 2px 7px;
-      border-radius: 3px;
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      color: var(--dim);
-    }
-    .exp-divider {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 24px 0;
-    }
+    .exp-div { border: none; border-top: 1px solid var(--border); margin: 22px 0; }
 
     /* ===== PROJECTS ===== */
-    .proj-item { margin-bottom: 20px; }
-    .proj-item:last-child { margin-bottom: 0; }
-    .proj-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 6px;
+    .proj { margin-bottom: 18px; }
+    .proj:last-child { margin-bottom: 0; }
+    .proj-title { font-size: 0.88rem; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+    .proj-title span { font-family: var(--mono); font-size: 0.68rem; color: var(--dim); font-weight: 400; margin-left: 8px; }
+    .ppts { list-style: none; display: flex; flex-direction: column; gap: 4px; margin-bottom: 8px; }
+    .ppts li {
+      font-size: 0.83rem; color: var(--muted); padding-left: 14px; position: relative; line-height: 1.55;
     }
-    .proj-title span {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--dim);
-      font-weight: 400;
-      margin-left: 8px;
-    }
-    .proj-points {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      margin-bottom: 8px;
-    }
-    .proj-points li {
-      font-size: 0.84rem;
-      color: var(--muted);
-      padding-left: 14px;
-      position: relative;
-    }
-    .proj-points li::before {
-      content: '▸';
-      position: absolute;
-      left: 0;
-      color: var(--cyan);
-      font-size: 0.65rem;
-      top: 4px;
-    }
-    .proj-points li strong { color: var(--text); }
+    .ppts li::before { content: '▸'; position: absolute; left: 0; color: var(--cyan); font-size: 0.62rem; top: 4px; }
+    .ppts li strong { color: var(--text); }
 
-    /* ===== CERTS & EDUCATION ===== */
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .cert-item, .edu-item {
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 14px 16px;
+    /* ===== 2-COL ===== */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .card {
+      background: var(--bg-alt); border: 1px solid var(--border);
+      border-radius: 8px; padding: 14px 16px;
+      transition: border-color 0.2s;
     }
-    .cert-item h4, .edu-item h4 {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 3px;
+    .card:hover { border-color: rgba(0,255,136,0.25); }
+    .card h4 { font-size: 0.85rem; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+    .card p  { font-family: var(--mono); font-size: 0.7rem; color: var(--muted); }
+    .card .sub { color: var(--dim); margin-top: 3px; }
+    .pill {
+      display: inline-block; margin-top: 7px; font-family: var(--mono); font-size: 0.6rem;
+      padding: 2px 8px; border-radius: 3px;
     }
-    .cert-item p, .edu-item p {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
-    .cert-item .earned {
-      display: inline-block;
-      margin-top: 6px;
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      padding: 2px 7px;
-      border-radius: 3px;
-      background: rgba(0,255,136,0.08);
-      border: 1px solid rgba(0,255,136,0.2);
-      color: var(--green);
-    }
-    .cert-item .progress {
-      display: inline-block;
-      margin-top: 6px;
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      padding: 2px 7px;
-      border-radius: 3px;
-      background: rgba(227,179,65,0.08);
-      border: 1px solid rgba(227,179,65,0.2);
-      color: var(--yellow);
-    }
+    .pill-g { background: rgba(0,255,136,0.08); border: 1px solid rgba(0,255,136,0.2); color: var(--green); }
+    .pill-y { background: rgba(227,179,65,0.08);  border: 1px solid rgba(227,179,65,0.2);  color: var(--yellow); }
 
     /* ===== ACHIEVEMENTS ===== */
-    .ach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .ach-item {
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 12px 14px;
-      font-size: 0.83rem;
-      color: var(--muted);
-      line-height: 1.5;
+    .ach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .ach {
+      background: var(--bg-alt); border: 1px solid var(--border);
+      border-radius: 8px; padding: 14px 16px;
+      font-size: 0.82rem; color: var(--muted); line-height: 1.55;
     }
-    .ach-item strong { color: var(--green); }
+    .ach .num { font-family: var(--mono); font-size: 1.3rem; font-weight: 700; color: var(--green); display: block; margin-bottom: 2px; }
+    .ach strong { color: var(--text); }
 
     /* ===== PRINT ===== */
     @media print {
-      @page { margin: 14mm 16mm; size: A4; }
+      @page { margin: 12mm 14mm; size: A4; }
       * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
       :root {
-        --bg: #ffffff;
-        --bg-card: #f8f9fa;
-        --bg-alt: #f0f2f4;
-        --border: #d0d7de;
-        --green: #1a7f37;
-        --cyan: #0969da;
-        --purple: #8250df;
-        --orange: #cf222e;
-        --yellow: #9a6700;
-        --text: #1f2328;
-        --muted: #57606a;
-        --dim: #8c959f;
+        --bg: #fff; --bg-card: #f8f9fa; --bg-alt: #f0f2f4; --border: #d0d7de;
+        --green: #1a7f37; --cyan: #0969da; --purple: #8250df; --orange: #cf222e; --yellow: #9a6700;
+        --text: #1f2328; --muted: #57606a; --dim: #8c959f;
       }
-      body { background: #fff; font-size: 13px; }
-      .print-bar { display: none; }
+      body { font-size: 12.5px; }
+      .topbar { display: none; }
       .page { margin: 0; max-width: 100%; padding: 0; }
-      .cv-header, .cv-section { border-radius: 0; page-break-inside: avoid; }
-      .cv-header { margin-bottom: 12px; }
-      .cv-section { margin-bottom: 10px; }
-      .exp-item { page-break-inside: avoid; }
+      .cv-header, .sec { border-radius: 0; page-break-inside: avoid; margin-bottom: 8px; }
+      .exp { page-break-inside: avoid; }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 680px) {
+      .header-inner { grid-template-columns: 1fr; }
+      .cv-contact { align-items: flex-start; }
+      .cv-loc { text-align: left; }
+      .two-col, .ach-grid { grid-template-columns: 1fr; }
+      .topbar { padding: 10px 16px; }
+      .page { padding: 0 16px; }
+      .sec { padding: 20px 18px; }
+      .cv-header { padding: 28px 20px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Print/Nav bar -->
-  <div class="print-bar">
-    <div class="print-bar-left">
-      <span>~/</span>namacloudops <span>›</span> resume
-    </div>
-    <div class="print-bar-actions">
-      <a href="/" class="btn-back">
-        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M7.78 12.53a.75.75 0 01-1.06 0L2.47 8.28a.75.75 0 010-1.06l4.25-4.25a.749.749 0 011.275.326.749.749 0 01-.215.734L4.81 7h7.44a.75.75 0 010 1.5H4.81l2.97 2.97a.75.75 0 010 1.06z"/></svg>
-        Portfolio
-      </a>
-      <button class="btn-print" onclick="window.print()">
-        ⬇ Download PDF
-      </button>
+  <div class="topbar">
+    <div class="topbar-brand"><span class="g">~/</span>namacloudops <span class="g">›</span> <span class="c">resume</span></div>
+    <div class="topbar-actions">
+      <a href="/" class="btn btn-outline">← Portfolio</a>
+      <button class="btn btn-primary" onclick="window.print()">⬇ Save as PDF</button>
     </div>
   </div>
 
   <div class="page">
 
-    <!-- ===== HEADER ===== -->
+    <!-- HEADER -->
     <div class="cv-header">
-      <div>
-        <div class="cv-name">Namdeo Pawar</div>
-        <div class="cv-role">Senior DevOps Engineer</div>
-        <p class="cv-summary">
-          Security-first DevOps engineer with <strong>4+ years</strong> building resilient, highly available cloud platforms for production workloads. Expert in <strong>Zero Trust networking (OpenZiti)</strong>, <strong>GitOps-driven Kubernetes (EKS, ArgoCD, Flux)</strong>, and end-to-end infrastructure automation that cut manual operational workload by <strong>80%</strong>. Proven track record of maintaining <strong>99.99% uptime</strong> across multi-cloud migrations while enforcing enterprise-grade IAM, SSO (Keycloak), and compliance controls. Passionate about turning complex infrastructure problems into repeatable, auditable code.
-        </p>
-      </div>
-      <div class="cv-contact">
-        <div class="cv-contact-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <a href="mailto:menamdeopawar@gmail.com">menamdeopawar@gmail.com</a>
-        </div>
-        <div class="cv-contact-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
-          +91 8237233307
-        </div>
-        <div class="cv-contact-item">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          <a href="https://linkedin.com/in/namdeopawar" target="_blank">linkedin.com/in/namdeopawar</a>
-        </div>
-        <div class="cv-contact-item">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-          <a href="https://github.com/namdeopawar" target="_blank">github.com/namdeopawar</a>
-        </div>
-        <div class="cv-contact-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-          <a href="https://namacloudops.in" target="_blank">namacloudops.in</a>
-        </div>
-        <div class="cv-location">Pune, Maharashtra, India</div>
-      </div>
-    </div>
-
-    <!-- ===== SKILLS ===== -->
-    <div class="cv-section">
-      <div class="cv-section-title">Technical Skills</div>
-      <div class="skills-rows">
-        <div class="skill-row">
-          <span class="skill-label">Cloud</span>
-          <div class="skill-chips">
-            <span class="chip y">AWS EC2</span><span class="chip y">EKS</span><span class="chip y">ECS</span><span class="chip y">RDS</span><span class="chip y">VPC</span><span class="chip y">IAM</span><span class="chip y">Route53</span><span class="chip y">Auto Scaling</span><span class="chip y">ELB</span><span class="chip y">CloudWatch</span><span class="chip">Azure</span><span class="chip">GCP</span>
+      <div class="header-inner">
+        <div>
+          <div class="cv-name">Namdeo Pawar</div>
+          <div class="cv-role">Senior DevOps & Kubernetes Engineer</div>
+          <div class="cv-tags">
+            <span class="cv-tag g">AWS EKS</span>
+            <span class="cv-tag g">On-Prem Kubernetes</span>
+            <span class="cv-tag">Terraform · IaC</span>
+            <span class="cv-tag">GitOps · ArgoCD · Flux</span>
+            <span class="cv-tag">Zero Trust</span>
+            <span class="cv-tag">CI/CD Automation</span>
           </div>
+          <p class="cv-summary">
+            Senior DevOps & Kubernetes Engineer with <strong>5+ years</strong> of hands-on experience designing, automating, and securing production-grade infrastructure across <strong>AWS EKS</strong> and <strong>on-premises Kubernetes</strong> environments. Deep expertise in <strong>GitOps (ArgoCD, Flux)</strong>, <strong>Infrastructure as Code (Terraform, Ansible)</strong>, and <strong>Zero Trust networking (OpenZiti)</strong>. Delivered <span class="hi">80% reduction in manual operations</span>, maintained <span class="hi">99.99% uptime</span> across multi-cloud migrations, and built end-to-end secure CI/CD platforms for enterprise workloads. Passionate about platform engineering, Kubernetes internals, and security-first automation at scale.
+          </p>
         </div>
-        <div class="skill-row">
-          <span class="skill-label">IaC & Config</span>
-          <div class="skill-chips">
-            <span class="chip p">Terraform</span><span class="chip p">Ansible</span><span class="chip p">CloudFormation</span><span class="chip p">Packer</span>
+        <div class="cv-contact">
+          <div class="ci">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:menamdeopawar@gmail.com">menamdeopawar@gmail.com</a>
           </div>
-        </div>
-        <div class="skill-row">
-          <span class="skill-label">Containers & K8s</span>
-          <div class="skill-chips">
-            <span class="chip c">Kubernetes (EKS)</span><span class="chip c">Helm</span><span class="chip c">Karpenter</span><span class="chip c">Docker</span><span class="chip c">ECS</span><span class="chip c">Rancher</span><span class="chip c">Docker Compose</span>
+          <div class="ci">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.4 2.13 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+            +91 8237233307
           </div>
-        </div>
-        <div class="skill-row">
-          <span class="skill-label">CI/CD & GitOps</span>
-          <div class="skill-chips">
-            <span class="chip g">GitLab CI/CD</span><span class="chip g">ArgoCD</span><span class="chip g">Flux</span><span class="chip g">Jenkins</span><span class="chip g">GitHub Actions</span><span class="chip g">CodePipeline</span><span class="chip g">CodeDeploy</span>
+          <div class="ci">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            <a href="https://linkedin.com/in/namdeopawar" target="_blank">linkedin.com/in/namdeopawar</a>
           </div>
-        </div>
-        <div class="skill-row">
-          <span class="skill-label">Security & IAM</span>
-          <div class="skill-chips">
-            <span class="chip o">OpenZiti</span><span class="chip o">Zero Trust</span><span class="chip o">Keycloak</span><span class="chip o">OIDC/SAML</span><span class="chip o">Harbor</span><span class="chip o">GuardDuty</span><span class="chip o">KMS</span><span class="chip o">NACLs</span><span class="chip o">TLS/PKI</span>
+          <div class="ci">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            <a href="https://github.com/namdeopawar" target="_blank">github.com/namdeopawar</a>
           </div>
-        </div>
-        <div class="skill-row">
-          <span class="skill-label">Observability</span>
-          <div class="skill-chips">
-            <span class="chip c">Prometheus</span><span class="chip c">Grafana</span><span class="chip c">Loki</span><span class="chip c">ELK Stack</span><span class="chip c">OpenSearch</span><span class="chip c">CloudWatch</span>
+          <div class="ci">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            <a href="https://namacloudops.in" target="_blank">namacloudops.in</a>
           </div>
-        </div>
-        <div class="skill-row">
-          <span class="skill-label">Virtualization</span>
-          <div class="skill-chips">
-            <span class="chip p">Proxmox</span><span class="chip p">VMware ESXi</span><span class="chip p">Hyper-V</span><span class="chip p">KVM</span>
-          </div>
-        </div>
-        <div class="skill-row">
-          <span class="skill-label">Service Mesh</span>
-          <div class="skill-chips">
-            <span class="chip">Istio</span><span class="chip">Consul</span><span class="chip">App Mesh</span>
-          </div>
-        </div>
-        <div class="skill-row">
-          <span class="skill-label">Scripting & DB</span>
-          <div class="skill-chips">
-            <span class="chip c">Bash/Shell</span><span class="chip c">Python</span><span class="chip c">YAML</span><span class="chip c">Groovy</span><span class="chip">MySQL</span><span class="chip">PostgreSQL</span><span class="chip">DynamoDB</span>
-          </div>
+          <div class="cv-loc">Pune, Maharashtra, India</div>
         </div>
       </div>
     </div>
 
-    <!-- ===== EXPERIENCE ===== -->
-    <div class="cv-section">
-      <div class="cv-section-title">Professional Experience</div>
+    <!-- SKILLS -->
+    <div class="sec">
+      <div class="sec-title">Core Technical Skills</div>
+      <div class="skill-rows">
 
-      <div class="exp-item">
-        <div class="exp-header">
-          <div>
-            <div class="exp-title">Senior DevOps Engineer <span class="exp-badge">Current</span></div>
-            <div class="exp-company">Ksolves India Limited</div>
+        <div class="sr">
+          <span class="sl">Kubernetes</span>
+          <div class="chips">
+            <span class="chip hi">EKS (AWS)</span>
+            <span class="chip hi">On-Prem K8s</span>
+            <span class="chip c">Helm</span>
+            <span class="chip c">Karpenter</span>
+            <span class="chip c">Ingress / Gateway API</span>
+            <span class="chip c">RBAC</span>
+            <span class="chip c">Network Policies</span>
+            <span class="chip c">Rancher</span>
+            <span class="chip c">K3s</span>
+            <span class="chip c">kubeadm</span>
           </div>
+        </div>
+
+        <div class="sr">
+          <span class="sl">AWS Cloud</span>
+          <div class="chips">
+            <span class="chip hi">EKS</span>
+            <span class="chip y">EC2</span>
+            <span class="chip y">VPC</span>
+            <span class="chip y">IAM</span>
+            <span class="chip y">ECS</span>
+            <span class="chip y">RDS</span>
+            <span class="chip y">Route53</span>
+            <span class="chip y">ELB / ALB</span>
+            <span class="chip y">Auto Scaling</span>
+            <span class="chip y">S3</span>
+            <span class="chip y">CloudWatch</span>
+            <span class="chip y">KMS</span>
+            <span class="chip y">GuardDuty</span>
+            <span class="chip">Azure</span>
+            <span class="chip">GCP</span>
+          </div>
+        </div>
+
+        <div class="sr">
+          <span class="sl">GitOps & CI/CD</span>
+          <div class="chips">
+            <span class="chip hi">ArgoCD</span>
+            <span class="chip hi">Flux</span>
+            <span class="chip g">GitLab CI/CD</span>
+            <span class="chip g">GitHub Actions</span>
+            <span class="chip g">Jenkins</span>
+            <span class="chip g">CodePipeline</span>
+            <span class="chip g">CodeDeploy</span>
+          </div>
+        </div>
+
+        <div class="sr">
+          <span class="sl">IaC & Automation</span>
+          <div class="chips">
+            <span class="chip hi">Terraform</span>
+            <span class="chip p">Ansible</span>
+            <span class="chip p">CloudFormation</span>
+            <span class="chip p">Packer</span>
+            <span class="chip p">Bash / Shell</span>
+            <span class="chip p">Python</span>
+          </div>
+        </div>
+
+        <div class="sr">
+          <span class="sl">Observability</span>
+          <div class="chips">
+            <span class="chip hi">Prometheus</span>
+            <span class="chip c">Grafana</span>
+            <span class="chip c">Loki</span>
+            <span class="chip c">AlertManager</span>
+            <span class="chip c">ELK Stack</span>
+            <span class="chip c">OpenSearch</span>
+            <span class="chip c">CloudWatch</span>
+          </div>
+        </div>
+
+        <div class="sr">
+          <span class="sl">Security & IAM</span>
+          <div class="chips">
+            <span class="chip o">OpenZiti (Zero Trust)</span>
+            <span class="chip o">Keycloak (OIDC/SAML)</span>
+            <span class="chip o">Harbor</span>
+            <span class="chip o">OPA / Gatekeeper</span>
+            <span class="chip o">Vault</span>
+            <span class="chip o">TLS / PKI</span>
+            <span class="chip o">NACLs</span>
+          </div>
+        </div>
+
+        <div class="sr">
+          <span class="sl">Containers</span>
+          <div class="chips">
+            <span class="chip c">Docker</span>
+            <span class="chip c">Containerd</span>
+            <span class="chip c">Docker Compose</span>
+            <span class="chip c">BuildKit</span>
+          </div>
+        </div>
+
+        <div class="sr">
+          <span class="sl">Virtualization</span>
+          <div class="chips">
+            <span class="chip p">Proxmox</span>
+            <span class="chip p">VMware ESXi</span>
+            <span class="chip p">Hyper-V</span>
+            <span class="chip p">KVM</span>
+          </div>
+        </div>
+
+        <div class="sr">
+          <span class="sl">Service Mesh / DB</span>
+          <div class="chips">
+            <span class="chip">Istio</span>
+            <span class="chip">Consul</span>
+            <span class="chip">App Mesh</span>
+            <span class="chip">MySQL</span>
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">DynamoDB</span>
+            <span class="chip">Amazon RDS</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="sec">
+      <div class="sec-title">Professional Experience</div>
+
+      <!-- Job 1 -->
+      <div class="exp">
+        <div class="exp-top">
           <div>
+            <div class="exp-title">Senior DevOps Engineer <span class="badge">Current</span></div>
+            <div class="exp-co">Ksolves India Limited</div>
+          </div>
+          <div class="exp-right">
             <div class="exp-date">Feb 2025 – Present</div>
-            <div class="exp-location">Pune, India</div>
+            <div class="exp-loc">Pune, India</div>
           </div>
         </div>
-        <ul class="exp-points">
-          <li>Engineered <strong>Zero Trust network architecture using OpenZiti</strong>, eliminating public endpoint exposure for service-to-service communication across <span class="metric">3+ enterprise data pipeline environments</span>.</li>
-          <li>Designed and operated <strong>high-availability Apache NiFi clusters</strong> on Kubernetes, delivering <span class="metric">99.99% uptime</span> for critical enterprise data pipelines.</li>
-          <li>Deployed enterprise <strong>SSO platform using Keycloak (OIDC/SAML)</strong>, centralizing authentication across all platform services and reducing access management overhead by <span class="metric">~60%</span>.</li>
-          <li>Built <strong>hardened golden images using Packer, Docker, and Kali Linux</strong> — standardized VM/container builds for security testing and production automation workloads.</li>
-          <li>Developed <strong>GitLab CI/CD pipelines</strong> for automated bot runner image builds with integrated security scanning, version tagging, and Harbor artifact publishing.</li>
-          <li>Deployed and managed <strong>Harbor private container registry</strong> with RBAC, image lifecycle policies, and vulnerability scanning — enforcing supply chain security standards.</li>
-          <li>Orchestrated <strong>production Kubernetes workloads using Helm and ArgoCD GitOps</strong> with automated rollout/rollback, reducing deployment risk and MTTR.</li>
-          <li>Built centralized observability stack (<strong>Prometheus + Grafana + Loki + CloudWatch</strong>) with proactive alerting, reducing incident MTTR by <span class="metric">&gt;40%</span>.</li>
-          <li>Mentored junior engineers on CI/CD, platform security, and IaC standards — accelerating team DevOps adoption.</li>
+        <ul class="pts">
+          <li>Designed and managed <span class="k">production-grade Kubernetes clusters</span> on <strong>AWS EKS and on-premises</strong> infrastructure, supporting enterprise-scale data pipeline workloads with <span class="m">99.99% uptime</span>.</li>
+          <li>Implemented <span class="k">GitOps workflows using ArgoCD and Flux</span> for declarative, auditable application delivery — reducing deployment errors and enabling instant rollback across all environments.</li>
+          <li>Built <strong>Zero Trust network architecture using OpenZiti</strong>, eliminating all public endpoint exposure for service-to-service communication and remote administration.</li>
+          <li>Automated full Kubernetes cluster provisioning on <strong>AWS EKS using Terraform</strong> — covering node groups, IAM roles, OIDC federation, VPC CNI, and Karpenter autoscaler configuration.</li>
+          <li>Deployed <span class="k">Karpenter</span> for intelligent, cost-optimized node autoscaling — reducing EC2 compute costs while maintaining workload SLAs.</li>
+          <li>Implemented enterprise <strong>SSO using Keycloak (OIDC/SAML)</strong> for Kubernetes dashboard, internal tools, and platform services — centralizing identity governance.</li>
+          <li>Established <strong>private container registry (Harbor)</strong> with RBAC, image lifecycle management, and vulnerability scanning — enforcing container supply chain security.</li>
+          <li>Built hardened container and VM images using <strong>Packer and Docker</strong> for security testing and standardized golden image pipelines.</li>
+          <li>Delivered centralized observability stack — <strong>Prometheus, Grafana, Loki, AlertManager</strong> — with custom dashboards and multi-channel alerting, reducing MTTR by <span class="m">&gt;40%</span>.</li>
+          <li>Developed <strong>GitLab CI/CD pipelines</strong> with integrated security scanning, semantic versioning, and automated artifact publishing to Harbor.</li>
         </ul>
-        <div class="exp-tech">
-          <span>OpenZiti</span><span>Keycloak</span><span>Kubernetes</span><span>ArgoCD</span><span>Harbor</span><span>Terraform</span><span>Ansible</span><span>GitLab CI/CD</span><span>Packer</span><span>Prometheus</span><span>Grafana</span><span>Loki</span>
+        <div class="techs">
+          <span>AWS EKS</span><span>On-Prem K8s</span><span>Terraform</span><span>ArgoCD</span><span>Flux</span><span>Helm</span><span>Karpenter</span><span>OpenZiti</span><span>Keycloak</span><span>Harbor</span><span>Prometheus</span><span>Grafana</span><span>Loki</span><span>GitLab CI/CD</span><span>Packer</span>
         </div>
       </div>
 
-      <hr class="exp-divider" />
+      <hr class="exp-div" />
 
-      <div class="exp-item">
-        <div class="exp-header">
+      <!-- Job 2 -->
+      <div class="exp">
+        <div class="exp-top">
           <div>
-            <div class="exp-title">Product Solution Engineer (DevOps)</div>
-            <div class="exp-company">DemandFarm</div>
+            <div class="exp-title">DevOps Engineer</div>
+            <div class="exp-co">DemandFarm</div>
           </div>
-          <div>
+          <div class="exp-right">
             <div class="exp-date">Aug 2021 – Jan 2025</div>
-            <div class="exp-location">Pune, India</div>
+            <div class="exp-loc">Pune, India</div>
           </div>
         </div>
-        <ul class="exp-points">
-          <li>Managed and automated operations across <span class="metric">1,000+ Linux and AWS EC2 instances</span>, handling <span class="metric">10TB+/month</span> of log ingestion and S3 archival pipelines.</li>
-          <li>Reduced infrastructure provisioning time by <span class="metric">60%</span> through Terraform, CloudFormation, and Ansible automation — replacing manual, error-prone workflows.</li>
-          <li>Implemented multi-stage <strong>CI/CD pipelines (Jenkins, CodePipeline, CodeDeploy)</strong>, improving release cadence and reducing deployment failures.</li>
-          <li>Executed complex <strong>multi-cloud workload migrations</strong> (AWS ↔ on-premises ↔ GCP) maintaining <span class="metric">99.99% uptime</span> throughout.</li>
-          <li>Led <strong>MySQL and PostgreSQL database migrations</strong> with zero data loss, and drove Ubuntu 18→22 upgrade program across entire production fleet, eliminating EOL security exposure.</li>
-          <li>Enforced security governance using <strong>IAM, GuardDuty, AWS Inspector, NACLs, and AWS Config</strong> — achieving full compliance posture across all environments.</li>
-          <li>Implemented <strong>enterprise SSO via Azure Entra ID / SAML</strong>, standardizing authentication and strengthening access governance.</li>
-          <li>Delivered <span class="metric">80% reduction</span> in manual operational workload through systematic automation, IaC adoption, and runbook standardization.</li>
+        <ul class="pts">
+          <li>Managed and automated operations across <span class="m">1,000+ Linux servers and AWS EC2 instances</span>, building self-service automation for provisioning, patching, and log archival (<span class="m">10TB+/month</span> to S3).</li>
+          <li>Designed and deployed <strong>multi-environment Kubernetes clusters</strong> (dev/staging/prod) on AWS, implementing namespace isolation, resource quotas, and network policies.</li>
+          <li>Provisioned and maintained <span class="k">AWS EKS clusters using Terraform and CloudFormation</span> — including managed node groups, Cluster Autoscaler, ALB Ingress Controller, and VPC design.</li>
+          <li>Built and maintained <strong>CI/CD pipelines (Jenkins, CodePipeline, CodeDeploy)</strong> for microservices deployments to Kubernetes, cutting release cycle time significantly.</li>
+          <li>Reduced infrastructure provisioning time by <span class="m">60%</span> through Terraform module standardization and Ansible playbook automation across all environments.</li>
+          <li>Executed complex <strong>multi-cloud workload migrations</strong> (AWS ↔ on-premises ↔ GCP) maintaining <span class="m">99.99% uptime</span> with zero customer impact.</li>
+          <li>Implemented <strong>IAM least-privilege, GuardDuty, AWS Inspector, and AWS Config</strong> rules — achieving and maintaining full compliance posture.</li>
+          <li>Led <strong>production database migrations</strong> (MySQL, PostgreSQL) with zero data loss, and orchestrated Ubuntu 18→22 fleet upgrade program eliminating all EOL security risks.</li>
+          <li>Delivered <span class="m">80% reduction</span> in manual operational workload through systematic IaC adoption, automation, and runbook engineering.</li>
         </ul>
-        <div class="exp-tech">
-          <span>AWS</span><span>Terraform</span><span>Ansible</span><span>Jenkins</span><span>CodePipeline</span><span>CloudFormation</span><span>GuardDuty</span><span>Azure Entra ID</span><span>MySQL</span><span>PostgreSQL</span>
+        <div class="techs">
+          <span>AWS EKS</span><span>Kubernetes</span><span>Terraform</span><span>Ansible</span><span>Jenkins</span><span>CodePipeline</span><span>CloudFormation</span><span>Cluster Autoscaler</span><span>ALB Ingress</span><span>GuardDuty</span><span>MySQL</span><span>PostgreSQL</span>
         </div>
       </div>
 
-      <hr class="exp-divider" />
+      <hr class="exp-div" />
 
-      <div class="exp-item">
-        <div class="exp-header">
+      <!-- Job 3 -->
+      <div class="exp">
+        <div class="exp-top">
           <div>
-            <div class="exp-title">Jr Salesforce Developer Intern</div>
-            <div class="exp-company">CloudInfomatic Pvt Ltd</div>
+            <div class="exp-title">Cloud Infrastructure Intern</div>
+            <div class="exp-co">CloudInfomatic Pvt Ltd</div>
           </div>
-          <div>
+          <div class="exp-right">
             <div class="exp-date">Mar 2021 – Jul 2021</div>
-            <div class="exp-location">Bangalore, India</div>
+            <div class="exp-loc">Bangalore, India</div>
           </div>
         </div>
-        <ul class="exp-points">
-          <li>Configured Salesforce automation workflows, validation rules, and approval processes for enterprise CRM operations.</li>
-          <li>Implemented secure access controls using sharing rules, role hierarchies, and profile-based permissions.</li>
+        <ul class="pts">
+          <li>Assisted in cloud environment setup and configuration, gaining hands-on experience with cloud infrastructure provisioning and automation tools.</li>
+          <li>Configured automation workflows and implemented secure access controls using RBAC and role-based permission models.</li>
         </ul>
-        <div class="exp-tech">
-          <span>Salesforce</span><span>RBAC</span><span>Workflow Automation</span>
+        <div class="techs">
+          <span>Cloud Infrastructure</span><span>RBAC</span><span>Automation</span>
         </div>
       </div>
     </div>
 
-    <!-- ===== PROJECTS ===== -->
-    <div class="cv-section">
-      <div class="cv-section-title">Key Projects</div>
+    <!-- KEY PROJECTS -->
+    <div class="sec">
+      <div class="sec-title">Key Projects</div>
 
-      <div class="proj-item">
-        <div class="proj-title">Secure Bot Runner Platform <span>OpenZiti · GitLab CI/CD · Harbor · Packer · Kali Linux</span></div>
-        <ul class="proj-points">
-          <li>Designed <strong>Zero Trust bot execution platform using OpenZiti</strong> — eliminated all public endpoint exposure, enabling fully controlled service-to-service access.</li>
-          <li>Built automated GitLab CI/CD pipeline for Docker/Kali image builds, security validation, semantic versioning, and Harbor publishing.</li>
-          <li>Generated reusable VM golden images using <strong>Packer (qcow2/AMI-ready)</strong> to standardize deployments; enforced image security with Harbor RBAC and vulnerability scanning.</li>
+      <div class="proj">
+        <div class="proj-title">
+          Production Kubernetes Platform — AWS EKS + On-Prem
+          <span>Terraform · Helm · ArgoCD · Flux · Karpenter · Prometheus · Grafana</span>
+        </div>
+        <ul class="ppts">
+          <li>Designed and operated <strong>multi-cluster Kubernetes platform</strong> spanning AWS EKS and on-premises nodes — unified management, consistent GitOps delivery via ArgoCD and Flux.</li>
+          <li>Implemented <strong>Karpenter</strong> for dynamic, topology-aware node provisioning; Cluster Autoscaler for on-prem — achieving cost efficiency without compromising SLA.</li>
+          <li>Full observability stack: <strong>Prometheus federation, Grafana dashboards, Loki log aggregation</strong>, and PagerDuty-integrated AlertManager for 24/7 incident response.</li>
+          <li>Ingress layer using <strong>NGINX Ingress Controller + AWS ALB</strong> with TLS termination, rate limiting, and WAF integration.</li>
         </ul>
       </div>
 
-      <div class="proj-item">
-        <div class="proj-title">Enterprise SSO Platform <span>Keycloak · OIDC · SAML · Nginx · Azure Entra ID · TLS</span></div>
-        <ul class="proj-points">
-          <li>Centralized authentication across all platform services using <strong>Keycloak with OIDC/SAML integrations</strong>, role mapping, and secure reverse-proxy (Nginx) patterns.</li>
-          <li>Hardened TLS/certificate lifecycle management and produced comprehensive onboarding documentation enabling rapid team adoption.</li>
+      <div class="proj">
+        <div class="proj-title">
+          Zero Trust Security Platform
+          <span>OpenZiti · Keycloak · Harbor · OPA/Gatekeeper · TLS/PKI</span>
+        </div>
+        <ul class="ppts">
+          <li>Replaced VPN-based access with <strong>OpenZiti Zero Trust overlay network</strong> — all service-to-service and admin access controlled via cryptographic identity, no public IPs exposed.</li>
+          <li>Centralized identity with <strong>Keycloak (OIDC/SAML)</strong> integrated into Kubernetes, CI/CD, and all internal tools — single SSO layer across the entire platform.</li>
+          <li>Enforced policy-as-code using <strong>OPA/Gatekeeper</strong> admission controllers — blocking non-compliant workloads at deploy time.</li>
         </ul>
       </div>
 
-      <div class="proj-item">
-        <div class="proj-title">Production Kubernetes Platform on AWS EKS <span>Terraform · Helm · ArgoCD · Karpenter · Prometheus · Grafana</span></div>
-        <ul class="proj-points">
-          <li>Provisioned AWS EKS cluster via <strong>Terraform</strong>; deployed all applications using <strong>Helm charts with ArgoCD GitOps</strong> for automated, auditable deployments with instant rollback.</li>
-          <li>Implemented <strong>Karpenter</strong> for cost-efficient, workload-aware node autoscaling; full observability via Prometheus/Grafana/Loki maintaining 99.99% uptime SLA.</li>
+      <div class="proj">
+        <div class="proj-title">
+          Automated CI/CD & Image Build Platform
+          <span>GitLab CI/CD · Packer · Docker · Harbor · ArgoCD</span>
+        </div>
+        <ul class="ppts">
+          <li>Built end-to-end pipeline from code commit → security scan → image build → Harbor push → ArgoCD deploy — fully automated with <strong>zero manual steps</strong>.</li>
+          <li>Generated hardened <strong>golden VM and container images using Packer</strong> (AMI + qcow2) for reproducible, auditable deployments across all environments.</li>
         </ul>
       </div>
     </div>
 
-    <!-- ===== CERTIFICATIONS ===== -->
-    <div class="cv-section">
-      <div class="cv-section-title">Certifications</div>
+    <!-- CERTIFICATIONS -->
+    <div class="sec">
+      <div class="sec-title">Certifications</div>
       <div class="two-col">
-        <div class="cert-item">
+        <div class="card">
           <h4>AWS Certified DevOps Engineer</h4>
-          <p>Professional</p>
-          <span class="earned">✓ Certified</span>
+          <p>Amazon Web Services &nbsp;·&nbsp; Professional</p>
+          <span class="pill pill-g">✓ Certified</span>
         </div>
-        <div class="cert-item">
+        <div class="card">
           <h4>AWS Certified Solutions Architect</h4>
-          <p>Associate</p>
-          <span class="earned">✓ Certified</span>
+          <p>Amazon Web Services &nbsp;·&nbsp; Associate</p>
+          <span class="pill pill-g">✓ Certified</span>
         </div>
-        <div class="cert-item">
+        <div class="card">
           <h4>Red Hat Certified System Administrator</h4>
-          <p>RHCSA</p>
-          <span class="earned">✓ Certified</span>
+          <p>Red Hat &nbsp;·&nbsp; RHCSA</p>
+          <span class="pill pill-g">✓ Certified</span>
         </div>
-        <div class="cert-item">
+        <div class="card">
           <h4>Red Hat Specialist in Ansible Automation</h4>
-          <p>Red Hat</p>
-          <span class="earned">✓ Certified</span>
+          <p>Red Hat &nbsp;·&nbsp; Automation</p>
+          <span class="pill pill-g">✓ Certified</span>
         </div>
-        <div class="cert-item">
+        <div class="card">
           <h4>Certified Kubernetes Administrator</h4>
-          <p>CNCF / Linux Foundation</p>
-          <span class="progress">⏳ In Progress</span>
+          <p>CNCF / Linux Foundation &nbsp;·&nbsp; CKA</p>
+          <span class="pill pill-y">⏳ In Progress</span>
         </div>
-        <div class="cert-item">
+        <div class="card">
           <h4>HashiCorp Certified: Terraform Associate</h4>
-          <p>HashiCorp</p>
-          <span class="progress">⏳ In Progress</span>
+          <p>HashiCorp &nbsp;·&nbsp; Infrastructure</p>
+          <span class="pill pill-y">⏳ In Progress</span>
         </div>
       </div>
     </div>
 
-    <!-- ===== EDUCATION ===== -->
-    <div class="cv-section">
-      <div class="cv-section-title">Education</div>
+    <!-- ACHIEVEMENTS -->
+    <div class="sec">
+      <div class="sec-title">Impact & Achievements</div>
+      <div class="ach-grid">
+        <div class="ach"><span class="num">80%</span><strong>ops workload reduction</strong> via IaC, automation & runbook standardization</div>
+        <div class="ach"><span class="num">99.99%</span><strong>uptime maintained</strong> across multi-cloud migrations and cluster upgrades</div>
+        <div class="ach"><span class="num">60%</span><strong>faster provisioning</strong> through Terraform module standardization</div>
+        <div class="ach"><span class="num">40%+</span><strong>MTTR reduction</strong> via Prometheus/Grafana observability and proactive alerting</div>
+        <div class="ach"><span class="num">1000+</span><strong>servers managed</strong> with full automation, patching, and compliance coverage</div>
+        <div class="ach"><span class="num">0</span><strong>data loss</strong> across MySQL & PostgreSQL production migrations</div>
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="sec">
+      <div class="sec-title">Education</div>
       <div class="two-col">
-        <div class="edu-item">
+        <div class="card">
           <h4>Master of Computer Application (MCA)</h4>
           <p>Government College of Engineering, Aurangabad</p>
-          <p style="color:var(--dim);margin-top:4px;">2018 – 2021 &nbsp;·&nbsp; Aurangabad, India</p>
+          <p class="sub">2018 – 2021 &nbsp;·&nbsp; Aurangabad, India</p>
         </div>
-        <div class="edu-item">
+        <div class="card">
           <h4>Bachelor of Science in Computer Science</h4>
           <p>Savitribai Phule Pune University</p>
-          <p style="color:var(--dim);margin-top:4px;">2015 – 2018 &nbsp;·&nbsp; Pune, India</p>
+          <p class="sub">2015 – 2018 &nbsp;·&nbsp; Pune, India</p>
         </div>
-      </div>
-    </div>
-
-    <!-- ===== ACHIEVEMENTS ===== -->
-    <div class="cv-section">
-      <div class="cv-section-title">Key Achievements</div>
-      <div class="ach-grid">
-        <div class="ach-item"><strong>80% reduction</strong> in manual operational workload through automation, IaC adoption, and runbook standardization</div>
-        <div class="ach-item"><strong>99.99% uptime</strong> maintained during complex multi-cloud migrations across AWS, on-prem, and GCP</div>
-        <div class="ach-item"><strong>60% faster</strong> infrastructure provisioning at DemandFarm via Terraform + Ansible automation</div>
-        <div class="ach-item"><strong>Zero data loss</strong> MySQL and PostgreSQL migrations in production with minimal downtime</div>
-        <div class="ach-item"><strong>Ubuntu 18→22</strong> production fleet upgrade program, eliminating EOL security risks</div>
-        <div class="ach-item"><strong>Enterprise SSO</strong> rollout (Azure Entra ID / SAML) strengthening auth governance across all services</div>
       </div>
     </div>
 
   </div>
-
 </body>
 </html>
