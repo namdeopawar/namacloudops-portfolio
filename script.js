@@ -20,11 +20,11 @@ navLinks.querySelectorAll('a').forEach(link => {
 
 // ===== TERMINAL TYPING ANIMATION =====
 const lines = [
-  { id: 'line1', text: '$ whoami',                         color: 'green',  delay: 300  },
-  { id: 'line2', text: '> namdeo-pawar',                   color: 'cyan',   delay: 900  },
-  { id: 'line3', text: '$ cat role.txt',                   color: 'green',  delay: 1600 },
-  { id: 'line4', text: '> Senior DevOps Engineer',         color: 'output', delay: 2200 },
-  { id: 'line5', text: '> AWS | K8s | Terraform | GitOps', color: 'output', delay: 2800 },
+  { id: 'line1', text: '$ whoami',                                  color: 'green',  delay: 300  },
+  { id: 'line2', text: '> namdeo-pawar',                            color: 'cyan',   delay: 900  },
+  { id: 'line3', text: '$ kubectl get expertise',                   color: 'green',  delay: 1600 },
+  { id: 'line4', text: '> AWS EKS  |  On-Prem K8s  |  GitOps',    color: 'output', delay: 2200 },
+  { id: 'line5', text: '> Terraform | ArgoCD | Flux | Zero Trust', color: 'output', delay: 2900 },
 ];
 
 function typeText(el, text, color, speed = 38) {

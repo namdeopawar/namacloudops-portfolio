@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Namdeo Pawar – Senior DevOps Engineer specializing in AWS, Kubernetes, Terraform, Zero Trust Networking, and GitOps. Based in Pune, India." />
-  <meta name="keywords" content="DevOps Engineer, AWS, Kubernetes, Terraform, ArgoCD, GitLab CI/CD, OpenZiti, Keycloak, Pune India" />
-  <meta property="og:title" content="Namdeo Pawar | Senior DevOps Engineer" />
-  <meta property="og:description" content="Senior DevOps Engineer with 4+ years building secure, highly available cloud platforms." />
+  <meta name="description" content="Namdeo Pawar – Senior DevOps & Kubernetes Engineer specializing in AWS EKS, On-Prem Kubernetes, Terraform, GitOps (ArgoCD, Flux), and Zero Trust Networking. Based in Pune, India." />
+  <meta name="keywords" content="DevOps Engineer, Kubernetes, AWS EKS, On-Prem K8s, Terraform, ArgoCD, Flux, GitOps, OpenZiti, Zero Trust, Keycloak, Prometheus, Grafana, Pune India" />
+  <meta property="og:title" content="Namdeo Pawar | Senior DevOps & Kubernetes Engineer" />
+  <meta property="og:description" content="Senior DevOps & Kubernetes Engineer with 5+ years building secure, production-grade cloud platforms on AWS EKS and on-prem Kubernetes." />
   <meta property="og:url" content="https://namacloudops.in" />
   <meta property="og:type" content="website" />
-  <title>Namdeo Pawar | Senior DevOps Engineer</title>
+  <title>Namdeo Pawar | Senior DevOps & Kubernetes Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -31,6 +31,7 @@
       <li><a href="#experience">experience</a></li>
       <li><a href="#projects">projects</a></li>
       <li><a href="#certifications">certs</a></li>
+      <li><a href="/cv">resume</a></li>
       <li><a href="#contact" class="nav-cta">contact</a></li>
     </ul>
   </nav>
@@ -57,13 +58,13 @@
       </div>
       <div class="hero-text">
         <h1 class="hero-name">Namdeo Pawar</h1>
-        <p class="hero-title">Senior DevOps Engineer</p>
-        <p class="hero-tagline">Building secure, scalable cloud platforms with AWS · Kubernetes · Terraform · Zero Trust</p>
+        <p class="hero-title">Senior DevOps & Kubernetes Engineer</p>
+        <p class="hero-tagline">AWS EKS · On-Prem Kubernetes · Terraform · GitOps (ArgoCD / Flux) · Zero Trust</p>
         <div class="hero-badges">
           <span class="badge">AWS DevOps Pro</span>
           <span class="badge">AWS SA Associate</span>
           <span class="badge">RHCSA</span>
-          <span class="badge">Red Hat Ansible</span>
+          <span class="badge">CKA (In Progress)</span>
         </div>
         <div class="hero-actions">
           <a href="#projects" class="btn-primary">View Projects</a>
@@ -94,12 +95,12 @@
       <h2 class="section-title"><span class="prompt">$</span> cat about.md</h2>
       <div class="about-grid">
         <div class="about-text fade-in">
-          <p>Senior DevOps Engineer with <strong>4+ years</strong> of experience delivering secure, highly available cloud platforms and automation for production workloads.</p>
-          <p>I specialize in architecting <strong>Zero Trust networks</strong>, building <strong>GitOps-driven Kubernetes platforms</strong> on AWS EKS, and implementing end-to-end <strong>CI/CD automation</strong> that reduced manual operational overhead by <strong>80%</strong>.</p>
-          <p>Passionate about security-first DevOps, infrastructure as code, and building reliable systems that support <strong>99.99% uptime</strong>.</p>
+          <p>Senior DevOps & Kubernetes Engineer with <strong>5+ years</strong> of experience designing and operating production-grade infrastructure across <strong>AWS EKS and on-premises Kubernetes</strong> environments.</p>
+          <p>Deep expertise in <strong>GitOps (ArgoCD, Flux)</strong>, <strong>Terraform IaC</strong>, and <strong>Zero Trust networking (OpenZiti)</strong> — delivered <strong>80% reduction in manual ops</strong> and maintained <strong>99.99% uptime</strong> across multi-cloud migrations.</p>
+          <p>Passionate about platform engineering, Kubernetes internals, security-first automation, and building systems that <strong>scale reliably at production</strong>.</p>
           <div class="about-stats">
             <div class="stat">
-              <span class="stat-num">4+</span>
+              <span class="stat-num">5+</span>
               <span class="stat-label">Years Experience</span>
             </div>
             <div class="stat">
@@ -125,7 +126,7 @@
             <div class="info-row"><span class="label">GitHub</span><span class="value"><a href="https://github.com/namdeopawar" target="_blank">github.com/namdeopawar</a></span></div>
             <div class="info-row"><span class="label">LinkedIn</span><span class="value"><a href="https://linkedin.com/in/namdeopawar" target="_blank">linkedin.com/in/namdeopawar</a></span></div>
           </div>
-          <a href="/NamdeoPawarDevOpsCV.pdf" download class="btn-download">
+          <a href="/cv" class="btn-download">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             Download Resume
           </a>
@@ -141,19 +142,54 @@
       <div class="skills-grid">
 
         <div class="skill-category fade-in">
-          <h3><span class="skill-icon">☁️</span> Cloud Platforms</h3>
+          <h3><span class="skill-icon">☸️</span> Kubernetes</h3>
           <div class="skill-tags">
-            <span class="tag tag-aws">AWS EC2</span>
-            <span class="tag tag-aws">AWS EKS</span>
-            <span class="tag tag-aws">AWS ECS</span>
-            <span class="tag tag-aws">AWS RDS</span>
-            <span class="tag tag-aws">AWS VPC</span>
-            <span class="tag tag-aws">AWS IAM</span>
+            <span class="tag tag-k8s">AWS EKS</span>
+            <span class="tag tag-k8s">On-Prem K8s</span>
+            <span class="tag tag-k8s">Helm</span>
+            <span class="tag tag-k8s">Karpenter</span>
+            <span class="tag tag-k8s">Cluster Autoscaler</span>
+            <span class="tag tag-k8s">Ingress / Gateway API</span>
+            <span class="tag tag-k8s">RBAC</span>
+            <span class="tag tag-k8s">Network Policies</span>
+            <span class="tag tag-k8s">Rancher</span>
+            <span class="tag tag-k8s">K3s</span>
+            <span class="tag tag-k8s">kubeadm</span>
+          </div>
+        </div>
+
+        <div class="skill-category fade-in">
+          <h3><span class="skill-icon">☁️</span> AWS Cloud</h3>
+          <div class="skill-tags">
+            <span class="tag tag-aws">EKS</span>
+            <span class="tag tag-aws">EC2</span>
+            <span class="tag tag-aws">VPC</span>
+            <span class="tag tag-aws">IAM</span>
+            <span class="tag tag-aws">ECS</span>
+            <span class="tag tag-aws">RDS</span>
             <span class="tag tag-aws">Route53</span>
+            <span class="tag tag-aws">ALB / ELB</span>
             <span class="tag tag-aws">Auto Scaling</span>
-            <span class="tag tag-aws">ELB</span>
+            <span class="tag tag-aws">S3</span>
+            <span class="tag tag-aws">CloudWatch</span>
+            <span class="tag tag-aws">KMS</span>
+            <span class="tag tag-aws">GuardDuty</span>
             <span class="tag">Azure</span>
             <span class="tag">GCP</span>
+          </div>
+        </div>
+
+        <div class="skill-category fade-in">
+          <h3><span class="skill-icon">🔄</span> GitOps & CI/CD</h3>
+          <div class="skill-tags">
+            <span class="tag tag-cicd">ArgoCD</span>
+            <span class="tag tag-cicd">Flux</span>
+            <span class="tag tag-cicd">GitLab CI/CD</span>
+            <span class="tag tag-cicd">GitHub Actions</span>
+            <span class="tag tag-cicd">Jenkins</span>
+            <span class="tag tag-cicd">CodePipeline</span>
+            <span class="tag tag-cicd">CodeBuild</span>
+            <span class="tag tag-cicd">CodeDeploy</span>
           </div>
         </div>
 
@@ -168,44 +204,27 @@
         </div>
 
         <div class="skill-category fade-in">
-          <h3><span class="skill-icon">🐳</span> Containers & Orchestration</h3>
+          <h3><span class="skill-icon">🐳</span> Containers</h3>
           <div class="skill-tags">
-            <span class="tag tag-k8s">Kubernetes (EKS)</span>
-            <span class="tag tag-k8s">Helm</span>
-            <span class="tag tag-k8s">Karpenter</span>
-            <span class="tag tag-k8s">Ingress</span>
             <span class="tag tag-k8s">Docker</span>
-            <span class="tag tag-k8s">ECS</span>
+            <span class="tag tag-k8s">Containerd</span>
             <span class="tag tag-k8s">Docker Compose</span>
-          </div>
-        </div>
-
-        <div class="skill-category fade-in">
-          <h3><span class="skill-icon">🔄</span> CI/CD & GitOps</h3>
-          <div class="skill-tags">
-            <span class="tag tag-cicd">GitLab CI/CD</span>
-            <span class="tag tag-cicd">ArgoCD</span>
-            <span class="tag tag-cicd">Flux</span>
-            <span class="tag tag-cicd">Jenkins</span>
-            <span class="tag tag-cicd">GitHub Actions</span>
-            <span class="tag tag-cicd">CodePipeline</span>
-            <span class="tag tag-cicd">CodeBuild</span>
-            <span class="tag tag-cicd">CodeDeploy</span>
+            <span class="tag tag-k8s">BuildKit</span>
+            <span class="tag tag-k8s">Harbor</span>
           </div>
         </div>
 
         <div class="skill-category fade-in">
           <h3><span class="skill-icon">🔒</span> Security & Identity</h3>
           <div class="skill-tags">
-            <span class="tag tag-sec">OpenZiti</span>
-            <span class="tag tag-sec">Zero Trust</span>
+            <span class="tag tag-sec">OpenZiti (Zero Trust)</span>
             <span class="tag tag-sec">Keycloak</span>
             <span class="tag tag-sec">OIDC / SAML</span>
-            <span class="tag tag-sec">Harbor</span>
+            <span class="tag tag-sec">OPA / Gatekeeper</span>
+            <span class="tag tag-sec">Vault</span>
             <span class="tag tag-sec">KMS</span>
-            <span class="tag tag-sec">GuardDuty</span>
             <span class="tag tag-sec">NACLs</span>
-            <span class="tag tag-sec">TLS/Certificates</span>
+            <span class="tag tag-sec">TLS / PKI</span>
           </div>
         </div>
 
@@ -215,6 +234,7 @@
             <span class="tag tag-obs">Prometheus</span>
             <span class="tag tag-obs">Grafana</span>
             <span class="tag tag-obs">Loki</span>
+            <span class="tag tag-obs">AlertManager</span>
             <span class="tag tag-obs">CloudWatch</span>
             <span class="tag tag-obs">ELK Stack</span>
             <span class="tag tag-obs">OpenSearch</span>
@@ -222,22 +242,23 @@
         </div>
 
         <div class="skill-category fade-in">
-          <h3><span class="skill-icon">🖥️</span> Virtualization & Bare Metal</h3>
+          <h3><span class="skill-icon">🖥️</span> Virtualization</h3>
           <div class="skill-tags">
             <span class="tag tag-virt">Proxmox</span>
             <span class="tag tag-virt">VMware ESXi</span>
             <span class="tag tag-virt">Hyper-V</span>
-            <span class="tag tag-virt">Rancher</span>
             <span class="tag tag-virt">KVM</span>
           </div>
         </div>
 
         <div class="skill-category fade-in">
-          <h3><span class="skill-icon">🌐</span> Service Mesh</h3>
+          <h3><span class="skill-icon">🌐</span> Service Mesh & Networking</h3>
           <div class="skill-tags">
-            <span class="tag">Consul</span>
             <span class="tag">Istio</span>
+            <span class="tag">Consul</span>
             <span class="tag">App Mesh</span>
+            <span class="tag">NGINX Ingress</span>
+            <span class="tag">AWS ALB Controller</span>
           </div>
         </div>
 
