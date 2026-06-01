@@ -229,18 +229,65 @@
 
     /* ===== PRINT ===== */
     @media print {
-      @page { margin: 12mm 14mm; size: A4; }
+      @page { margin: 10mm 12mm; size: A4; }
       * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
       :root {
         --bg: #fff; --bg-card: #f8f9fa; --bg-alt: #f0f2f4; --border: #d0d7de;
         --green: #1a7f37; --cyan: #0969da; --purple: #8250df; --orange: #cf222e; --yellow: #9a6700;
         --text: #1f2328; --muted: #57606a; --dim: #8c959f;
       }
-      body { font-size: 12.5px; }
+      html { font-size: 11.5px; }
+      body { font-size: 11.5px; }
       .topbar { display: none; }
       .page { margin: 0; max-width: 100%; padding: 0; }
-      .cv-header, .sec { border-radius: 0; page-break-inside: avoid; margin-bottom: 8px; }
-      .exp { page-break-inside: avoid; }
+
+      /* Compact header */
+      .cv-header { border-radius: 6px; margin-bottom: 6px; padding: 20px 24px; }
+      .cv-name { font-size: 1.7rem; }
+      .cv-role { font-size: 0.82rem; margin-bottom: 6px; }
+      .cv-tags { margin-bottom: 10px; gap: 4px; }
+      .cv-tag { font-size: 0.6rem; padding: 2px 7px; }
+      .cv-summary { font-size: 0.78rem; line-height: 1.6; }
+      .ci { font-size: 0.65rem; gap: 5px; }
+      .cv-loc { font-size: 0.62rem; }
+
+      /* Compact sections */
+      .sec { border-radius: 6px; margin-bottom: 6px; padding: 14px 18px; page-break-inside: avoid; }
+      .sec-title { font-size: 0.6rem; margin-bottom: 12px; padding-bottom: 7px; }
+
+      /* Compact skills */
+      .skill-rows { gap: 6px; }
+      .sr { gap: 8px; }
+      .sl { font-size: 0.6rem; min-width: 110px; }
+      .chip { font-size: 0.6rem; padding: 2px 6px; }
+
+      /* Compact experience */
+      .exp { margin-bottom: 14px; }
+      .exp-title { font-size: 0.85rem; }
+      .exp-co { font-size: 0.72rem; margin-bottom: 7px; }
+      .exp-date { font-size: 0.63rem; }
+      .exp-loc { font-size: 0.63rem; }
+      .pts li { font-size: 0.76rem; line-height: 1.5; }
+      .pts { gap: 4px; margin-bottom: 8px; }
+      .techs span { font-size: 0.58rem; padding: 1px 5px; }
+      .exp-div { margin: 14px 0; }
+      .badge { font-size: 0.55rem; }
+
+      /* Compact projects */
+      .proj { margin-bottom: 12px; }
+      .proj-title { font-size: 0.8rem; }
+      .ppts li { font-size: 0.75rem; line-height: 1.45; }
+      .ppts { gap: 3px; }
+
+      /* Compact certs, ach, edu */
+      .two-col { gap: 8px; }
+      .card { padding: 10px 12px; border-radius: 6px; }
+      .card h4 { font-size: 0.77rem; }
+      .card p { font-size: 0.63rem; }
+      .pill { font-size: 0.55rem; margin-top: 4px; }
+      .ach-grid { gap: 7px; }
+      .ach { padding: 10px 12px; font-size: 0.73rem; border-radius: 6px; }
+      .ach .num { font-size: 1.05rem; }
     }
 
     /* ===== RESPONSIVE ===== */
